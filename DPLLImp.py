@@ -71,7 +71,7 @@ def is_clause_true(clause, assignment):
                 return True
     return False
 
-# DPLL algorithm for solving CNF formulas
+
 # DPLL algorithm for solving CNF formulas
 def DPLL(cnf, assignment):
     global max_satisfied_clauses  # Define a global variable to keep track of max satisfied clauses
