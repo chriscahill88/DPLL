@@ -23,16 +23,18 @@
 #https://github.com/bwconrad/DPLL-SAT-Solver/blob/master/dpll.py
 
 # Import necessary libraries
-import pylab as plt #Making plots
-import time #Keeping track of time
-import os #Used for looping through folder 
-import matplotlib.pyplot as plt #used for Plots
+import pylab as plt # Making plots
+import time # Keeping track of time
+import os # Used for looping through folder 
+import matplotlib.pyplot as plt # Used for plots
 
 # Directory containing CNF files (EDIT for user specific files)
 cnf_folder = "/Users/christopher/Desktop/XCode_Projects/PA3_Benchmarks/CNF Formulas/"
+
 # Lists to store data
-max_satisfied_clauses_list = []
-current_dpll_times_list = []
+max_satisfied_clauses_list = []  # List to store max satisfied clauses
+current_dpll_times_list = []     # List to store DPLL execution times
+
 # Function to read the CNF formula from a file
 def read_cnf(file_name):
     cnf = []
@@ -70,9 +72,11 @@ def is_clause_true(clause, assignment):
     return False
 
 # DPLL algorithm for solving CNF formulas
+# DPLL algorithm for solving CNF formulas
 def DPLL(cnf, assignment):
     global max_satisfied_clauses  # Define a global variable to keep track of max satisfied clauses
     max_satisfied_clauses = 0  # Initialize max_satisfied_clauses
+
     # Check if all clauses are true with the current assignment
     if all(is_clause_true(clause, assignment) for clause in cnf):
         num_satisfied_clauses = sum(1 for clause in cnf if is_clause_true(clause, assignment))  # Count satisfied clauses
@@ -96,10 +100,6 @@ def DPLL(cnf, assignment):
 
     # Find the first unassigned literal in the sorted list
     unassigned = next((v for v in sorted_literals if v not in assignment), None)
-
-
-
-
 
     # If no unassigned variable is found, the formula is satisfied
     if unassigned is None:
